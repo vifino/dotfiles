@@ -1,0 +1,8 @@
+e asm.syntax=intel
+e asm.indent=true
+e asm.pseudo=true
+e asm.fcnlines=true
+e asm.lbytes=false
+e asm.tabs=1
+e asm.filter=true
+e asm.describe=true
