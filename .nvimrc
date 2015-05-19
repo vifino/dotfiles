@@ -150,6 +150,7 @@ NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'PotatoesMaster/i3-vim-syntax'
 " set background=dark
 let g:indent_guides_enable_on_vim_startup = 1
 let g:gist_detect_filetype = 1
