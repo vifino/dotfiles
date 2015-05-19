@@ -6,13 +6,13 @@
 set $mod Mod4
 
 ### Workspace variables - change the workspace labels here!
-set $WS1 term
+set $WS1 >_
 set $WS2 player
-set $WS3 web
-set $WS4 editor
+set $WS3 www
+set $WS4 edit
 set $WS5 misc
-set $WS6 VI
-set $WS7 VII
+set $WS6 panel
+set $WS7 game
 set $WS8 VIII
 set $WS9 IX
 set $WS10 X
@@ -107,15 +107,15 @@ bindsym $mod+0 workspace "10:$WS10"
 
 
 ### Send focused container to workspace
-bindsym $mod+Shift+1 move container to workspace "1:$WS1"
-bindsym $mod+Shift+2 move container to workspace "2:$WS2"
-bindsym $mod+Shift+3 move container to workspace "3:$WS3"
-bindsym $mod+Shift+4 move container to workspace "4:$WS4"
-bindsym $mod+Shift+5 move container to workspace "5:$WS5"
-bindsym $mod+Shift+6 move container to workspace "6:$WS6"
-bindsym $mod+Shift+7 move container to workspace "7:$WS7"
-bindsym $mod+Shift+8 move container to workspace "8:$WS8"
-bindsym $mod+Shift+9 move container to workspace "9:$WS9"
+bindsym $mod+Shift+1 move container to workspace "1: $WS1"
+bindsym $mod+Shift+2 move container to workspace "2: $WS2"
+bindsym $mod+Shift+3 move container to workspace "3: $WS3"
+bindsym $mod+Shift+4 move container to workspace "4: $WS4"
+bindsym $mod+Shift+5 move container to workspace "5: $WS5"
+bindsym $mod+Shift+6 move container to workspace "6: $WS6"
+bindsym $mod+Shift+7 move container to workspace "7: $WS7"
+bindsym $mod+Shift+8 move container to workspace "8: $WS8"
+bindsym $mod+Shift+9 move container to workspace "9: $WS9"
 bindsym $mod+Shift+0 move container to workspace "10:$WS10"
 
 # reload the configuration file
