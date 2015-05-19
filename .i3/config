@@ -162,7 +162,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar with wrapper script
 bar {
 	strip_workspace_numbers yes
-        status_command ~/.i3/i3status.sh
+	status_command ~/.i3/conky.sh
+	font xft:Ubuntu mono 6, FontAwesome 6
 }
 # Lambdas! Wee! 
 # The below command maps my "ö" key on my german apple keyboard.
@@ -170,3 +171,5 @@ exec xmodmap -e "keycode 47 = U00F6 U00D6 U03BB U03BB U03BB U039B"
 
 # Compton
 exec --no-startup-id compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange
+
+# vim:filetype=i3
