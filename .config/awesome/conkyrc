@@ -16,7 +16,7 @@ draw_outline no
 draw_graph_borders yes
 stippled_borders 8
 border_width 1
-maximum_width 155
+maximum_width 170
 default_color darkgrey
 default_shade_color black
 default_outline_color black
@@ -24,41 +24,40 @@ alignment bottom_right
 gap_x 4
 gap_y 4
 no_buffers yes
-uppercase no
 cpu_avg_samples 2
 net_avg_samples 2
 override_utf8_locale no
-use_spacer none
+use_spacers none
+short_units yes
 
 TEXT
-${color #5b6dad}${alignc}${nodename} ${uptime_short}
+${color #5b6dad}${alignc}${nodename} 
+${color #5b6dad}${alignc}${uptime_short}
 
-${color #5b6dad}CPU: ${color grey}$cpu%
+${color #5b6dad}CPU: ${alignr}${color grey}$cpu%
 ${color #5b6dad} ${cpugraph 16,140 000000 7f8ed3}
-${color #5b6dad}RAM: $color$mem/$memmax
+${color #5b6dad}RAM: ${alignr}$color$mem/$memmax
 ${color #5b6dad} ${membar 6,140}
 
-${color #5b6dad}WLP4S0B1 Down: $color${downspeed wlp4s0b1}${alignr} k/s 
+${color #5b6dad}WLP4S0B1 DOWN:${alignr}$color${downspeed wlp4s0b1}
 ${color #5b6dad} ${downspeedgraph wlp4s0b1 16,140 000000 7f8ed3 150}
-${color #5b6dad}WLP4S0B1 Up:   $color${upspeed wlp4s0b1}${alignr} k/s 
+${color #5b6dad}WLP4S0B1 UP:${alignr}$color${upspeed wlp4s0b1} 
 ${color #5b6dad} ${upspeedgraph wlp4s0b1 16,140 000000 7f8ed3 18}
 
-${color #5b6dad}File systems:
-${color #5b6dad}/       $color${fs_free /}
+${color #5b6dad} /${alignr}$color${fs_free /}
 ${color #5b6dad} ${fs_bar 6,140 /}
 
-${color #5b6dad}Processes:$color $processes | $running_processes
-${color} Cpu usage    CPU
-${color #ddaa00} ${top name 1}${offset -50} ${top cpu 1}
-${color #5b6dad} ${top name 2}${offset -50} ${top cpu 2}
-${color #5b6dad} ${top name 3}${offset -50} ${top cpu 3}
-${color #5b6dad} ${top name 4}${offset -50} ${top cpu 4}
+${color #5b6dad}PROC${alignr}CPU
+${color #ddaa00} ${top name 1}${alignr}${top cpu 1}
+${color #5b6dad} ${top name 2}${alignr}${top cpu 2}
+${color #5b6dad} ${top name 3}${alignr}${top cpu 3}
+${color #5b6dad} ${top name 4}${alignr}${top cpu 4}
 
-${color} Mem usage    MEM
-${color #ddaa00} ${top_mem name 1}${offset -50} ${top_mem mem 1}
-${color #5b6dad} ${top_mem name 2}${offset -50} ${top_mem mem 2}
-${color #5b6dad} ${top_mem name 3}${offset -50} ${top_mem mem 3}
-${color #5b6dad} ${top_mem name 4}${offset -50} ${top_mem mem 4}
+${color #5b6dad}PROC${alignr}MEM
+${color #ddaa00} ${top_mem name 1}${alignr}${top_mem mem 1}
+${color #5b6dad} ${top_mem name 2}${alignr}${top_mem mem 2}
+${color #5b6dad} ${top_mem name 3}${alignr}${top_mem mem 3}
+${color #5b6dad} ${top_mem name 4}${alignr}${top_mem mem 4}
 
-${color #5b6dad}# Connections   
-$color In: ${tcp_portmon 1 32767 count}  Out: ${tcp_portmon 32768 61000 count}${alignr}
+${color #5b6dad}CONNECTIONS
+$color In: ${tcp_portmon 1 32767 count}${alignr}Out: ${tcp_portmon 32768 61000 count}${alignr}
