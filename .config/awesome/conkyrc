@@ -46,6 +46,9 @@ ${color #5b6dad} ${upspeedgraph wlp4s0b1 16,140 000000 7f8ed3 18}
 
 ${color #5b6dad} /${alignr}$color${fs_free /}
 ${color #5b6dad} ${fs_bar 6,140 /}
+${color #5b6dad} /home${alignr}$color${fs_free /home}
+${color #5b6dad} ${fs_bar 6,140 /home}
+
 
 ${color #5b6dad}PROC${alignr}CPU
 ${color #ddaa00} ${top name 1}${alignr}${top cpu 1}

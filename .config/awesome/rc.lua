@@ -86,7 +86,7 @@ end
 -- }}}
 
 -- {{{ Font
-awesome.font = "Ubuntu Mono 8"
+awesome.font = "Ubuntu Mono 10"
 -- }}}
 
 -- {{{ Tags
