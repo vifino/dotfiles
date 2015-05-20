@@ -90,7 +90,7 @@ local L_floating = layouts[1]
 local L_tile = layouts[2]
 local L_max = layouts[4]
 tags = {
-	names = { ">_",   "player", "www", "editor",	"misc",     "panel",	"game", 8,	    9,		10},
+	names = { ">_",  "player", "www",  "editor",     "misc",     "panel",    "game", 8,          9,            10},
 	layout = {L_tile, L_tile,   L_max, L_floating,	 L_floating, L_floating, L_max,  L_floating, L_floating, L_floating}
 }
 for s = 1, screen.count() do

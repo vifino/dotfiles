@@ -39,9 +39,9 @@ ${color #5b6dad} ${cpugraph 16,140 000000 7f8ed3}
 ${color #5b6dad}RAM: ${alignr}$color$mem/$memmax
 ${color #5b6dad} ${membar 6,140}
 
-${color #5b6dad}WLP4S0B1 DOWN:${alignr}$color${downspeed wlp4s0b1}
+${color #5b6dad}WIFI DOWN:${alignr}$color${downspeed wlp4s0b1}
 ${color #5b6dad} ${downspeedgraph wlp4s0b1 16,140 000000 7f8ed3 150}
-${color #5b6dad}WLP4S0B1 UP:${alignr}$color${upspeed wlp4s0b1} 
+${color #5b6dad}WIFI UP:${alignr}$color${upspeed wlp4s0b1} 
 ${color #5b6dad} ${upspeedgraph wlp4s0b1 16,140 000000 7f8ed3 18}
 
 ${color #5b6dad} /${alignr}$color${fs_free /}
@@ -60,4 +60,4 @@ ${color #5b6dad} ${top_mem name 3}${alignr}${top_mem mem 3}
 ${color #5b6dad} ${top_mem name 4}${alignr}${top_mem mem 4}
 
 ${color #5b6dad}CONNECTIONS
-$color In: ${tcp_portmon 1 32767 count}${alignr}Out: ${tcp_portmon 32768 61000 count}${alignr}
+$color I: ${tcp_portmon 1 32767 count} ${alignr}${tcp_portmon 32768 61000 count} :O
