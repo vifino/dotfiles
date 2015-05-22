@@ -515,6 +515,11 @@ function run_once(prg,arg_string,pname,screen)
 	end
 end
 
+-- Launch conky
+run_once("conky -c ~/.config/awesome/conkyrc")
+
+-- Launch nm applet
+run_once("nm-applet")
+
 -- Launch compton.
 run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange")
-run_once("conky -c ~/.config/awesome/conkyrc")
