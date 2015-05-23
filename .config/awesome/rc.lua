@@ -1,5 +1,6 @@
 -- Standard awesome library
 pcall(function() jit.on() end) -- Activate JIT if possible.
+
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
@@ -204,11 +205,6 @@ fs_usage:set_background_color("#00000000")
 fs_usage:set_label("/: $percent%")
 vicious.register(fs_usage, vicious.widgets.fs, "${/ used_p}", 120 )
 
-shutdown=blingbling.system.shutdownmenu() --icons have been set in theme
-reboot=blingbling.system.rebootmenu() --icons have been set in theme
-lock=blingbling.system.lockmenu() --icons have been set in theme
-logout=blingbling.system.logoutmenu()
-
 for s = 1, screen.count() do
 	-- Create a taglist widget
 	mytaglist[s]=blingbling.tagslist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
@@ -245,10 +241,6 @@ for s = 1, screen.count() do
 	right_layout:add(volume_bar)
 	right_layout:add(mytextclock)
 	right_layout:add(mylayoutbox[s])
-	right_layout:add(reboot)
-	right_layout:add(shutdown)
-	right_layout:add(logout)
-	right_layout:add(lock)
 
 	-- Now bring it all together (with the tasklist in the middle)
 	local layout = wibox.layout.align.horizontal()
@@ -523,3 +515,7 @@ run_once("nm-applet")
 
 -- Launch compton.
 run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange")
+
+-- GPG
+gpg_env_file = os.getenv("HOME") .. "/.gnugpg/gpg-agent.env"
+run_once("gpg-agent --daemon --enable-ssh-support --write-env-file \""..gpg_env_file.."\"")
