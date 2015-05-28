@@ -1,8 +1,3 @@
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-	finish
-endif
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -151,6 +146,8 @@ NeoBundle 'flazz/vim-colorschemes'
 NeoBundle 'elixir-lang/vim-elixir'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'PotatoesMaster/i3-vim-syntax'
+"NeoBundle 'jtratner/vim-flavored-markdown'
+NeoBundle 'gabrielelana/vim-markdown'
 " set background=dark
 let g:indent_guides_enable_on_vim_startup = 1
 let g:gist_detect_filetype = 1
@@ -162,3 +159,10 @@ syntax on
 colorscheme tir_black
 
 set noet ci pi sts=0 sw=2 ts=2 " vifino <3 Tabs
+
+" printer stuffs.
+"let &printexpr="(v:cmdarg=='' ? ".
+"    \"system('lpr' . (&printdevice == '' ? '' : ' -P' . &printdevice)".
+"    \". ' ' . v:fname_in) . delete(v:fname_in) + v:shell_error".
+"    \" : system('mv '.v:fname_in.' '.v:cmdarg) + v:shell_error)"
+
