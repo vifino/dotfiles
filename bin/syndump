@@ -1,14 +1,14 @@
 #!/bin/sh
 from=$1
 to=$2
-if [[ "$to" == "-" ]]; then
+if [ "$to" == "-" ]; then
 	to="/dev/tty"
-elif [[ "$to" == "" ]]; then
+elif [ "$to" == "" ]; then
 	to="/dev/tty"
 fi
-if [[ "$from" == "-" ]]; then
+if [ "$from" == "-" ]; then
   from="/dev/stdin"
-elif [[ "$from" == "" ]]; then
+elif [ "$from" == "" ]; then
   from="/dev/stdin"
 fi
 
