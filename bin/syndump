@@ -1,6 +1,8 @@
 #!/bin/sh
 from=$1
 to=$2
+shift
+shift
 if [ "$to" == "-" ]; then
 	to="/dev/tty"
 elif [ "$to" == "" ]; then
@@ -12,4 +14,4 @@ elif [ "$from" == "" ]; then
   from="/dev/stdin"
 fi
 
-exec vim --headless -EsHRXnc "hardcopy >$to" +"source ~/.vimrc" $from +q
+exec vim --headless -EsHRXnc "hardcopy >$to" +"source ~/.vimrc" $from $@ +q
