@@ -14,4 +14,4 @@ elif [ "$from" == "" ]; then
   from="/dev/stdin"
 fi
 
-exec vim --headless -EsHRXnc "hardcopy >$to" +"source ~/.vimrc" $from $@ +q
+exec vim --headless -EsHRXn +"source ~/.vimrc" +"syntax on" +"filetype indent plugin on" $from $@ -c "hardcopy >$to" +q
