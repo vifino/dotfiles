@@ -1,0 +1,5 @@
+#!/bin/bash
+outputFileName="/%(playlist)s/%(title)s"
+youtube-dl -o "$2%(playlist)s/%(title)s.ytdl" --max-quality url $1
+find $2 -type f -name "*.ytdl" -exec avconv -i '{}' '{}'.mp3 ;
+find $2 -name *.ytdl -exec rm {} +

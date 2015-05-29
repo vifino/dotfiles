@@ -1,0 +1,2 @@
+#!/bin/bash
+awk 'FNR==NR{a[$0]++;next}!a[$0]' $@

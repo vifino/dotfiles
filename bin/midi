@@ -1,0 +1,1 @@
+exec aplaymidi --port 128:1 $@

@@ -1,0 +1,2 @@
+#!/bin/sh
+router opkg list-upgradable | awk '{ print $1 }' | router xargs opkg upgrade 

@@ -1,0 +1,1 @@
+exec '/usr/bin/zandronum' '-iwad' '/home/vifino/DoomData/doom.wad' $@

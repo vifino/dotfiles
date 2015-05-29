@@ -1,0 +1,6 @@
+#!/bin/sh
+router-dump-pkgs > /tmp/router_pkg_dump
+router wget http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/openwrt-ar71xx-generic-archer-c7-v2-squashfs-sysupgrade.bin -O /tmp/firmwareupdate.bin
+router sysupgrade -v /tmp/firmwareupdate.bin
+sleep 60
+cat /tmp/router_pkg_dump | xargs router opkg install

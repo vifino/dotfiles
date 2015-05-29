@@ -1,0 +1,18 @@
+#!/bin/bash
+
+
+if [[ "$1" =~ ^[0-9]+$ ]]; then
+	if [ "$1" -ge 0 -a "$1" -le 1023 ]; then
+		sh -c "echo $1 > /sys/class/backlight/gmux_backlight/brightness"
+	else
+		echo "Value must be in range of 0 and 1023!"
+	fi
+else
+	if [[ "$1" == '' || "$1" == 'get'  ]]; then
+		cat /sys/class/backlight/gmux_backlight/brightness
+	elif [[ "$1" == "max" ]]; then
+		cat /sys/class/backlight/gmux_backlight/max_brightness
+	else
+		echo "'$1' is not a Number! Aborting..." >&2 && exit 1; 
+	fi
+fi

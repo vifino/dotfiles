@@ -1,0 +1,4 @@
+#!/bin/bash
+alsa_in -j "$2 Capture" -d "$1" &
+alsa_out -j "$2 Playback" -d "$1" &
+wait

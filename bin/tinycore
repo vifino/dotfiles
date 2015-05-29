@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -t 0 ]; then
+	# Terminal input (keyboard) - interactive
+	exec docker run --rm -it zoobab/tinycore-x64 /bin/sh $@
+else
+	# File or pipe input - non-interactive
+	exec docker run --rm -i zoobab/tinycore-x64 /bin/sh -c "cat > code; /bin/sh code;"
+fi

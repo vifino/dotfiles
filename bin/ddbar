@@ -1,0 +1,14 @@
+#!/bin/bash
+# Made by vifino
+if [ ! $1 ] || [ ! $2 ]; then
+	echo 'Usage: ddbar (Input File) (Output File) (extra: bs Value)'
+	exit
+else
+	echo "Cloning $1 to $2 ..."
+	if [ ! $3 ]; then
+		pv -tpreb $1 | dd of=$2
+	else
+		pv -tpreb $1 | dd of=$2 bs=$3
+	fi
+fi
+exit

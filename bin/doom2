@@ -1,0 +1,1 @@
+exec '/usr/bin/zandronum' '-iwad' '/home/vifino/DoomData/doom2.wad' '-file' '/home/vifino/DoomData/pk-doom-sfx-20100109.pk3' '-file' '/home/vifino/DoomData/zdoom-high-res.pk3' $@

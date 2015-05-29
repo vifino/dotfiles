@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ -t 0 ]; then
+	# Terminal input (keyboard) - interactive
+	exec docker run --rm -it dock0/arch /bin/bash $@
+else
+	# File or pipe input - non-interactive
+	exec docker run --rm -i dock0/arch /bin/bash -c "cat > code; /bin/sh code;"
+fi

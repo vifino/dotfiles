@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ -z "$2" ]; then
+	livestreamer twitch.tv/$1 high
+else
+	livestreamer twitch.tv/$1 $2
+fi

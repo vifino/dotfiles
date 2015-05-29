@@ -1,0 +1,2 @@
+#!/bin/sh
+nmap --script ssl-enum-ciphers -p 443 "$1" |grep "SSLv3: No supported" ||echo "Site vulnerable to poodle"

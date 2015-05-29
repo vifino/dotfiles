@@ -1,0 +1,10 @@
+#!/bin/sh
+# Enables -flto for the commands inside of it.
+export CFLAGS="$CFLAGS -flto"
+export CXXFLAGS="$CXXFLAGS -flto"
+if [[ LDFLAGS == "" ]]; then
+	export LDFLAGS="-flto"
+else
+	export LDFLAGS="$LDFLAGS,-flto"
+fi
+exec $@

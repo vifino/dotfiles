@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! $1 ] || [ ! $2 ]; then
+	echo 'Usage: ddbox (Input File) (Output File) (extra: bs Value)'
+	exit
+else
+	if [ ! $3 ]; then
+		(pv -n $1 | dd of=$1 conv=notrunc,noerror) 2>&1 | dialog --gauge "Cloning $1 to $2, please wait..." 10 70 0
+		clear
+	else
+		(pv -n $1 | dd of=$1 bs=$1 conv=notrunc,noerror) 2>&1 | dialog --gauge "Cloning $1 to $2, please wait..." 10 70 0
+		clear
+	fi
+fi
+exit

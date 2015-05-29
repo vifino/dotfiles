@@ -1,0 +1,9 @@
+#!/bin/bash
+a2jmidi_bridge MT32 &
+jalv http://github.com/munt/munt &
+sleep 2
+jack_connect 'MT32:capture' 'Munt MT-32 Emulator:control'
+jack_connect 'Munt MT-32 Emulator:out_l' 'system:playback_1'
+jack_connect 'Munt MT-32 Emulator:out_r' 'system:playback_2'
+wait
+
