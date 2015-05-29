@@ -126,16 +126,20 @@ let g:neocomplcache_dictionary_filetype_lists = {
 		\ 'vimshell' : $HOME.'/.vimshell_hist',
 		\ 'scheme' : $HOME.'/.gosh_completions'
 	\ }
+"NeoBundle 'Valloric/YouCompleteMe'
+"NeoBundle 'Shougo/deoplete.nvim'
+let g:deoplete#enable_at_startup = 1
+NeoBundle 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'Shougo/neosnippet'
+"NeoBundle 'Shougo/neosnippet-snippets'
+
 NeoBundle 'wlangstroth/vim-racket'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'bling/vim-airline' " Vim Airline
-set laststatus=2
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/gist-vim'
@@ -148,9 +152,15 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'PotatoesMaster/i3-vim-syntax'
 "NeoBundle 'jtratner/vim-flavored-markdown'
 NeoBundle 'gabrielelana/vim-markdown'
+NeoBundle 'mileszs/ack.vim'
 " set background=dark
 let g:indent_guides_enable_on_vim_startup = 1
 let g:gist_detect_filetype = 1
+
+NeoBundle 'bling/vim-airline' " Vim Airline
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Done Bundeling!
 call neobundle#end()
