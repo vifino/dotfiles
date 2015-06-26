@@ -15,6 +15,7 @@ local menubar = require("menubar")
 
 local vicious = require("vicious")
 local blingbling = require("blingbling")
+local awesompd = require("awesompd/awesompd")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -114,7 +115,7 @@ myawesomemenu = {
 	{ "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon }, { "open terminal", terminal },
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
 			{ "open terminal", terminal }
 		}
 	})
@@ -193,17 +194,33 @@ local colors_stops = {{beautiful.green, 0},
 	{beautiful.red, 0.90}
 }
 
-volume_bar = blingbling.volume({height = 18, width = 40, bar =true, show_text = true, label ="Vol"})
+volume_bar = blingbling.volume({height = 18, width = 40, bar = true, show_text = true, label ="Vol"})
 volume_bar:update_master()
 volume_bar:set_master_control()
 
-fs_usage=blingbling.value_text_box({height = 14, width = 40, v_margin = 3})
-fs_usage:set_text_background_color(beautiful.widget_background)
-fs_usage:set_values_text_color(colors_stops)
-fs_usage:set_font_size(8)
-fs_usage:set_background_color("#00000000")
-fs_usage:set_label("/: $percent%")
-vicious.register(fs_usage, vicious.widgets.fs, "${/ used_p}", 120 )
+-- AwesoMPD Widget.
+musicwidget = awesompd:create() -- Create awesompd widget
+musicwidget.font = "Ubuntu Mono" -- Set widget font 
+musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
+musicwidget.output_size = 30 -- Set the size of widget in symbols
+musicwidget.update_interval = 10 -- Set the update interval in seconds
+musicwidget.path_to_icons = os.getenv("HOME") .. ".config/awesome/awesompd/icons"
+musicwidget.jamendo_format = awesompd.FORMAT_MP3
+musicwidget.show_album_cover = true
+musicwidget.album_cover_size = 50
+musicwidget.browser = "xdg-open"
+musicwidget.ldecorator = " "
+musicwidget.rdecorator = " "
+musicwidget.servers = {{ server = "localhost", port = 6600 }}
+musicwidget:register_buttons({ { "", awesompd.MOUSE_LEFT, musicwidget:command_playpause() },
+                               { "Control", awesompd.MOUSE_SCROLL_UP, musicwidget:command_prev_track() },
+                               { "Control", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_next_track() },
+                               { "", awesompd.MOUSE_SCROLL_UP, musicwidget:command_volume_up() },
+                               { "", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_volume_down() },
+                               { "", awesompd.MOUSE_RIGHT, musicwidget:command_show_menu() },
+                               { "", "XF86AudioLowerVolume", musicwidget:command_volume_down() },
+                               { "", "XF86AudioRaiseVolume", musicwidget:command_volume_up() })
+musicwidget:run()
 
 for s = 1, screen.count() do
 	-- Create a taglist widget
@@ -233,7 +250,7 @@ for s = 1, screen.count() do
 	left_layout:add(mypromptbox[s])
 	left_layout:add(cpu_graph)
 	left_layout:add(mem_graph)
-	left_layout:add(fs_usage)
+	left_layout:add(musicwidget.widget)
 
 	-- Widgets that are aligned to the right
 	local right_layout = wibox.layout.fixed.horizontal()
@@ -514,8 +531,12 @@ run_once("conky -c ~/.config/awesome/conkyrc")
 run_once("nm-applet")
 
 -- Launch compton.
-run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange")
+--run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange")
+run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --backend glx")
 
 -- GPG
 gpg_env_file = os.getenv("HOME") .. "/.gnugpg/gpg-agent.env"
 run_once("gpg-agent --daemon --enable-ssh-support --write-env-file \""..gpg_env_file.."\"")
+
+-- Mopidy :D
+run_once("mopidy")
