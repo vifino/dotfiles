@@ -1,9 +1,9 @@
 #!/bin/sh
 # Runs k20 in small splits
 clients=("$@")
-for ((i=${#clients[@]}-1; i>=0; i--))
+for (( i=$#; i>0; i-- ))
 do
-	var=${clients[$i]}
+	var="${@:$i:1}"
 	tmux split-window -l 3 "k20 -n \"k20 $var\" \"$var\""
 	tmux last-pane
 done
