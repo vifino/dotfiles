@@ -46,7 +46,7 @@ end
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 local home_dir   = os.getenv("HOME")
 local themes_dir = home_dir .. "/.config/awesome/themes"
-local theme_dir = themes_dir .. "/japanese2"
+local theme_dir = themes_dir .. "/vifino"
 beautiful.init(theme_dir .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -97,8 +97,8 @@ local L_floating = layouts[1]
 local L_tile = layouts[2]
 local L_max = layouts[4]
 tags = {
-	names = { ">_", "player", "www", "editor", "misc", "panel", "game", 8, 9, 10},
-	layout = {L_tile, L_tile, L_max, L_floating, L_floating, L_floating, L_max, L_floating, L_floating, L_floating}
+	names = { ">_",  "player", "www", "editor",   "misc",     "panel",    "game",     8,          9,          10},
+	layout = {L_tile, L_tile,   L_max, L_floating, L_floating, L_floating, L_floating, L_floating, L_floating, L_floating}
 }
 for s = 1, screen.count() do
 	-- Each screen has its own tag table.
@@ -219,7 +219,7 @@ musicwidget:register_buttons({ { "", awesompd.MOUSE_LEFT, musicwidget:command_pl
                                { "", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_volume_down() },
                                { "", awesompd.MOUSE_RIGHT, musicwidget:command_show_menu() },
                                { "", "XF86AudioLowerVolume", musicwidget:command_volume_down() },
-                               { "", "XF86AudioRaiseVolume", musicwidget:command_volume_up() })
+                               { "", "XF86AudioRaiseVolume", musicwidget:command_volume_up() }})
 musicwidget:run()
 
 for s = 1, screen.count() do
