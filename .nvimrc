@@ -89,29 +89,21 @@ augroup END "
 set noet si pi sts=0 sw=2 ts=2
 set title
 set nu
-set runtimepath+=~/.nvim/bundle/neobundle.vim/
+"set runtimepath+=~/.nvim/bundle/neobundle.vim/
 set nobackup
-call neobundle#begin(expand('~/.nvim/bundle/'))
+"call neobundle#begin(expand('~/.nvim/bundle/'))
+call plug#begin('~/.nvim/plugged')
 " Bundeling! :D
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\			'windows' : 'tools\\update-dll-mingw',
-\			'cygwin' : 'make -f make_cygwin.mak',
-\			'mac' : 'make -f make_mac.mak',
-\			'linux' : 'make',
-\			'unix' : 'gmake',
-\		 },
-\ }
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'edkolev/promptline.vim'
-NeoBundle 'MarcWeber/vim-addon-mw-utils'
-NeoBundle 'tomtom/tlib_vim'
-NeoBundle 'Shougo/neocomplcache.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'fatih/vim-go'
+Plug 'edkolev/promptline.vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'Shougo/neocomplcache.vim'
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -126,46 +118,49 @@ let g:neocomplcache_dictionary_filetype_lists = {
 		\ 'vimshell' : $HOME.'/.vimshell_hist',
 		\ 'scheme' : $HOME.'/.gosh_completions'
 	\ }
-"NeoBundle 'Valloric/YouCompleteMe'
-"NeoBundle 'Shougo/deoplete.nvim'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'Shougo/deoplete.nvim'
 let g:deoplete#enable_at_startup = 1
-NeoBundle 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-NeoBundle 'honza/vim-snippets'
-"NeoBundle 'Shougo/neosnippet'
-"NeoBundle 'Shougo/neosnippet-snippets'
+Plug 'honza/vim-snippets'
+"Plug 'Shougo/neosnippet'
+"Plug 'Shougo/neosnippet-snippets'
 
-NeoBundle 'wlangstroth/vim-racket'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/gist-vim'
-NeoBundle 'wting/rust.vim'
-NeoBundle 'severin-lemaignan/vim-minimap'
-NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'elixir-lang/vim-elixir'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'PotatoesMaster/i3-vim-syntax'
-"NeoBundle 'jtratner/vim-flavored-markdown'
-NeoBundle 'gabrielelana/vim-markdown'
-NeoBundle 'mileszs/ack.vim'
+Plug 'wlangstroth/vim-racket'
+Plug 'Shougo/unite.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Shougo/vimshell.vim'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'wting/rust.vim'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'edkolev/tmuxline.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'elixir-lang/vim-elixir'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'PotatoesMaster/i3-vim-syntax'
+"Plug 'jtratner/vim-flavored-markdown'
+Plug 'gabrielelana/vim-markdown'
+Plug 'mileszs/ack.vim'
+Plug 'rhysd/vim-crystal'
+Plug 'tpope/vim-endwise'
 " set background=dark
 let g:indent_guides_enable_on_vim_startup = 1
 let g:gist_detect_filetype = 1
 
-NeoBundle 'bling/vim-airline' " Vim Airline
+Plug 'bling/vim-airline' " Vim Airline
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-NeoBundle 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 " Done Bundeling!
-call neobundle#end()
-NeoBundleCheck
+call plug#end()
+
 syntax on
 colorscheme tir_black
 
@@ -177,3 +172,31 @@ set noet ci pi sts=0 sw=2 ts=2 " vifino <3 Tabs
 "    \". ' ' . v:fname_in) . delete(v:fname_in) + v:shell_error".
 "    \" : system('mv '.v:fname_in.' '.v:cmdarg) + v:shell_error)"
 
+" Return indent (all whitespace at start of a line), converted from
+" tabs to spaces if what = 1, or from spaces to tabs otherwise.
+" When converting to tabs, result has no redundant spaces.
+function! Indenting(indent, what, cols)
+  let spccol = repeat(' ', a:cols)
+  let result = substitute(a:indent, spccol, '\t', 'g')
+  let result = substitute(result, ' \+\ze\t', '', 'g')
+  if a:what == 1
+    let result = substitute(result, '\t', spccol, 'g')
+  endif
+  return result
+endfunction
+
+" Convert whitespace used for indenting (before first non-whitespace).
+" what = 0 (convert spaces to tabs), or 1 (convert tabs to spaces).
+" cols = string with number of columns per tab, or empty to use 'tabstop'.
+" The cursor position is restored, but the cursor will be in a different
+" column when the number of characters in the indent of the line is changed.
+function! IndentConvert(line1, line2, what, cols)
+  let savepos = getpos('.')
+  let cols = empty(a:cols) ? &tabstop : a:cols
+  execute a:line1 . ',' . a:line2 . 's/^\s\+/\=Indenting(submatch(0), a:what, cols)/e'
+  call histdel('search', -1)
+  call setpos('.', savepos)
+endfunction
+command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-args>)
+command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
+command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
