@@ -50,7 +50,7 @@ local theme_dir = themes_dir .. "/vifino"
 beautiful.init(theme_dir .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "terminology"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -211,7 +211,7 @@ musicwidget.album_cover_size = 50
 musicwidget.browser = "xdg-open"
 musicwidget.ldecorator = " "
 musicwidget.rdecorator = " "
-musicwidget.servers = {{ server = "localhost", port = 6600 }}
+musicwidget.servers = {{ server = "localhost", port = 6600 }, { server = "acorn", port = 6600 }}
 musicwidget:register_buttons({ { "", awesompd.MOUSE_LEFT, musicwidget:command_playpause() },
                                { "Control", awesompd.MOUSE_SCROLL_UP, musicwidget:command_prev_track() },
                                { "Control", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_next_track() },
@@ -301,14 +301,14 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
 	awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
 	awful.key({ modkey, }, "u", awful.client.urgent.jumpto),
-	awful.key({ modkey, }, "Tab",
-		function ()
-			awful.client.focus.history.previous()
-			if client.focus then
-				client.focus:raise()
-			end
-		end),
-
+	--awful.key({ modkey, }, "Tab",
+	--	function ()
+	--		awful.client.focus.history.previous()
+	--		if client.focus then
+	--			client.focus:raise()
+	--		end
+	--	end),
+	--
 	-- Standard program
 	awful.key({ modkey, }, "Return", function () awful.util.spawn(terminal) end),
 	awful.key({ modkey, "Control" }, "r", awesome.restart),
@@ -320,7 +320,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey, "Shift" }, "l", function () awful.tag.incnmaster(-1) end),
 	awful.key({ modkey, "Control" }, "h", function () awful.tag.incncol( 1) end),
 	awful.key({ modkey, "Control" }, "l", function () awful.tag.incncol(-1) end),
-	awful.key({ modkey, }, "space", function () awful.layout.inc(layouts, 1) end),
+	awful.key({ modkey, }, "space", function () awful.util.spawn("rofi -show run") end),
+	awful.key({ modkey, }, "Tab", function () awful.util.spawn("rofi -show window") end),
 	awful.key({ modkey, "Shift" }, "space", function () awful.layout.inc(layouts, -1) end),
 
 	awful.key({ modkey, "Control" }, "n", awful.client.restore),
@@ -539,4 +540,4 @@ gpg_env_file = os.getenv("HOME") .. "/.gnugpg/gpg-agent.env"
 run_once("gpg-agent --daemon --enable-ssh-support --write-env-file \""..gpg_env_file.."\"")
 
 -- Mopidy :D
-run_once("mopidy")
+--run_once("mopidy")

@@ -1,0 +1,98 @@
+Xft*dpi: 96
+Xft*antialias: true
+Xtf*hinting: full
+
+! special
+*.foreground:   #8ca68c
+*.background:   #131513
+*.cursorColor:  #8ca68c
+
+! black
+*.color0:       #131513
+*.color8:       #687d68
+
+! red
+*.color1:       #e6193c
+*.color9:       #e6193c
+
+! green
+*.color2:       #29a329
+*.color10:      #29a329
+
+! yellow
+*.color3:       #c3c322
+*.color11:      #c3c322
+
+! blue
+*.color4:       #3d62f5
+*.color12:      #3d62f5
+
+! magenta
+*.color5:       #ad2bee
+*.color13:      #ad2bee
+
+! cyan
+*.color6:       #1999b3
+*.color14:      #1999b3
+
+! white
+*.color7:       #8ca68c
+*.color15:      #f0fff0
+
+
+! URxvt
+URxvt.font: xft:Ubuntu mono derivative Powerline:style=Regular:size=12:antialias=true:autohint=true,xft:Symbola
+URxvt.boldFont: xft:Ubuntu mono derivative Powerline:style=Bold:size=12:antialias=true:autohint=true
+URxvt.italicFont: xft:Ubuntu mono derivative Powerline:style=Italic:size=12:antialias=true:autohint=true
+URxvt.boldItalicFont: xft:Ubuntu Mono derivative Powerline:style=Bold Italic:size=12:antialias=true:autohint=true
+
+URxvt*transparent: true
+URxvt*shading: 15
+
+URxvt*termName: screen-256color
+URxvt*loginShell: false
+URxvt*scrollColor: #777777
+URxvt*scrollstyle: plain
+URxvt*scrollTtyKeypress: true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: false
+URxvt*secondaryScreen: true
+URxvt*secondaryScroll: true
+URxvt*skipScroll: true
+
+URxvt*scrollBar: false
+URxvt*scrollBar_right: false
+URxvt*scrollBar_floating: false
+
+URxvt*fading: 30
+URxvt*utmpInhibit: false
+URxvt*urgentOnBell: false
+URxvt*visualBell: true
+URxvt*mapAlert: true
+URxvt*mouseWheelScrollPage: false
+URxvt*background: Black
+URxvt*foreground: White
+URxvt*colorUL: yellow
+URxvt*underlineColor: yellow
+URxvt*saveLines: 0
+URxvt*buffered: true
+URxvt*hold: false
+URxvt*internalBorder:
+URxvt*print-pipe: cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+
+! Paste and copy.
+URxvt.iso14755: false
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.perl-ext-common: default,clipboard
+
+! Disabled: Disable perl extensions.
+! URxvt.perl-ext:
+! URxvt.perl-ext-common:
+
+! rofi
+rofi.font:	xft:Ubuntu mono 15
+rofi.bg:	#373737
+rofi.fg:	#7a6e4e
+rofi.hlbg:	#070000
+rofi.hlfg:	#978965
