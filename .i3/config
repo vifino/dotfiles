@@ -32,7 +32,7 @@ client.urgent           #373737 #373737 #978965 #070000
 ###
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+#floating_modifier $mod
 
 # start terminal
 bindsym $mod+Return exec urxvt
@@ -129,6 +129,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Border stuffs.
 # none = no border, normal = default i3, 1pixel = 1pixel border
+new_window none
+hide_edge_borders both
 bindsym $mod+Shift+x border none
 bindsym $mod+Shift+n border normal
 bindsym $mod+Shift+o border 1pixel
@@ -207,11 +209,15 @@ mode "$mode_gaps_outer" {
 bar {
 	strip_workspace_numbers yes
 	status_command ~/.i3/conky.sh
-	font xft:Ubuntu mono 6, FontAwesome 6
+	font pango:Ubuntu mono 6, FontAwesome 6
 }
 
-# Feh
+# XRDB
+exec --no-startup-id xrdb -merge ~/.Xresources
+
+# Background
 exec --no-startup-id [ -f ~/.fehbg ] && exec ~/.fehbg
+exec --no-startup-id pgrep sway && swaymsg output LVDS-1 bg ~/Documents/heroku.svg fill
 
 # Lambdas! Wee! 
 # The below command maps my "ö" key on my german apple keyboard.
@@ -219,7 +225,7 @@ exec --no-startup-id xmodmap -e "keycode 47 = U00F6 U00D6 U03BB U03BB U03BB U039
 
 # Compton
 #exec --no-startup-id compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange
-exec --no-startup-id compton -cCGb --unredir-if-possible --paint-on-overlay --backend glx
+exec --no-startup-id pgrep compton || compton -cCGb --unredir-if-possible --paint-on-overlay --backend glx
 
 # Network Manager
 exec --no-startup-id nm-applet

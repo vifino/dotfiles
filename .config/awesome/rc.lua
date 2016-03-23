@@ -533,7 +533,7 @@ run_once("nm-applet")
 
 -- Launch compton.
 --run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --glx-no-rebind-pixmap --backend glx --vsync opengl-swc --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method exchange")
-run_once("compton -cCGb --unredir-if-possible --paint-on-overlay --backend glx")
+--run_once("pgrep compton || compton -cCGb --unredir-if-possible --paint-on-overlay --backend glx")
 
 -- GPG
 gpg_env_file = os.getenv("HOME") .. "/.gnugpg/gpg-agent.env"
