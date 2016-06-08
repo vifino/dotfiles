@@ -103,24 +103,11 @@ Plug 'fatih/vim-go'
 Plug 'edkolev/promptline.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'Shougo/neocomplcache.vim'
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplcache_dictionary_filetype_lists = {
-		\ 'default' : '',
-		\ 'vimshell' : $HOME.'/.vimshell_hist',
-		\ 'scheme' : $HOME.'/.gosh_completions'
-	\ }
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'Shougo/deoplete.nvim'
+"Plug 'Shougo/neocomplcache.vim'
+" Use deoplete.
 let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -137,7 +124,7 @@ Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
 Plug 'wting/rust.vim'
 Plug 'severin-lemaignan/vim-minimap'
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'elixir-lang/vim-elixir'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -158,6 +145,10 @@ let g:airline_powerline_fonts = 1
 
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug '88Alex/vim-lang-exts'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go'
+
 " Done Bundeling!
 call plug#end()
 
